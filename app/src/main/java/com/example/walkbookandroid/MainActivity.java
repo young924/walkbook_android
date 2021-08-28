@@ -68,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.searchItem:
+            case R.id.action_search:
                 ((TextView)findViewById(R.id.textView)).setText("SEARCH");
                 return true ;
-            case R.id.accountItem:
+            case R.id.action_account:
                 ((TextView)findViewById(R.id.textView)).setText("ACCOUNT");
                 return true ;
-            case R.id.logoutItem:
+            case R.id.action_logout:
                 ((TextView)findViewById(R.id.textView)).setText("LOGOUT");
                 return true ;
             default :

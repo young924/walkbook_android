@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/searchItem"
+        android:id="@+id/action_search"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/menu_search"
         app:showAsAction="always" />
     <item
-        android:id="@+id/accountItem"
+        android:id="@+id/action_account"
         android:title="@string/menu_account"
         app:showAsAction="never" />
     <item
-        android:id="@+id/logoutItem"
+        android:id="@+id/action_logout"
         android:title="@string/menu_logout"
         app:showAsAction="never" />
 </menu>
