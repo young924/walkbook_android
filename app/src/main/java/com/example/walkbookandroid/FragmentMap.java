@@ -14,15 +14,22 @@ import net.daum.mf.map.api.MapView;
 
 public class FragmentMap extends Fragment {
     Context mContext;
+    MapView mapView;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mContext = getActivity();
 
         View root = (ViewGroup) inflater.inflate(R.layout.fragment_map, container, false);
-//        MapView mapView = new MapView(mContext);
-//        ViewGroup mapViewContainer = (ViewGroup)root.findViewById(R.id.map_view);
-//        mapViewContainer.addView(mapView);
+        mapView = new MapView(mContext);
+        ViewGroup mapViewContainer = (ViewGroup)root.findViewById(R.id.map_view);
+        mapViewContainer.addView(mapView);
 
         return root;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ((ViewGroup) mapView.getParent()).removeView(mapView);
     }
 }
