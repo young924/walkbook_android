@@ -1,5 +1,6 @@
 package com.example.walkbookandroid;
 
+import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -67,15 +69,37 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        TextView textView = (TextView)findViewById(R.id.textView);
         switch (item.getItemId()) {
             case R.id.action_search:
-                ((TextView)findViewById(R.id.textView)).setText("SEARCH");
+                textView.setText("SEARCH");
                 return true ;
             case R.id.action_account:
-                ((TextView)findViewById(R.id.textView)).setText("ACCOUNT");
+                textView.setText("ACCOUNT");
                 return true ;
             case R.id.action_logout:
-                ((TextView)findViewById(R.id.textView)).setText("LOGOUT");
+                textView.setText("LOGOUT");
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Logout");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String message = "You logged out.";
+                        textView.setText(message);
+                    }
+                });
+                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String message = "You're not logging out.";
+                        textView.setText(message);
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
                 return true ;
             default :
                 return super.onOptionsItemSelected(item) ;
